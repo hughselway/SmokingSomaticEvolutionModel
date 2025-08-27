@@ -1,0 +1,321 @@
+[
+    {
+        "name": "non_smoking_mutations_per_year",
+        "module": "base",
+        "default_value": 25.0,
+        "help_string": "mutation rate while not smoking",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 25.0,
+        "prior_std": 20.0,
+        "colour": [
+            0.7098039215686275,
+            0.3450980392156862,
+            0.0588235294117647
+        ]
+    },
+    {
+        "name": "smoking_mutation_rate_augmentation",
+        "module": "base",
+        "default_value": 3.0,
+        "help_string": "proportional increase in mutation rate while smoking",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 3.0,
+        "prior_std": 2.0,
+        "colour": [
+            0.6980392156862745,
+            0.2392156862745098,
+            0.2117647058823529
+        ]
+    },
+    {
+        "name": "fitness_change_scale",
+        "module": "base",
+        "default_value": 0.05,
+        "help_string": "multiplier for the distribution of fitness changes on mutation",
+        "spatial_only": false,
+        "inactive_value": 0.0,
+        "varying_scale": "linear",
+        "prior_dict": {
+            "type": "rv_discrete",
+            "kwargs": {
+                "values": [
+                    [
+                        0.0,
+                        0.05,
+                        0.1
+                    ],
+                    [
+                        0.5,
+                        0.25,
+                        0.25
+                    ]
+                ]
+            }
+        },
+        "colour": [
+            0.8901960784313725,
+            0.7058823529411765,
+            0.4274509803921568
+        ]
+    },
+    {
+        "name": "non_smoking_divisions_per_year",
+        "module": "base",
+        "default_value": 33.0,
+        "help_string": "divisions per year while not smoking",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 33.0,
+        "prior_std": 15.0,
+        "colour": [
+            0.5372549019607843,
+            0.388235294117647,
+            0.8549019607843137
+        ]
+    },
+    {
+        "name": "smoking_division_rate_augmentation",
+        "module": "base",
+        "default_value": 0.8,
+        "help_string": "proportional increase in division rate while smoking",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 0.8,
+        "prior_std": 0.4,
+        "colour": [
+            0.7333333333333333,
+            0.6509803921568628,
+            0.9176470588235294
+        ]
+    },
+    {
+        "name": "mutation_rate_multiplier_shape",
+        "module": "base",
+        "default_value": 800.0,
+        "help_string": "shape parameter for the pareto distribution of mutation rate multipliers",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 800.0,
+        "prior_std": 200.0,
+        "colour": [
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    {
+        "name": "quiescent_fraction",
+        "module": "quiescent",
+        "default_value": 0.1,
+        "help_string": "number of initial quiescent cells, as a fraction of the initial basal cell number",
+        "spatial_only": false,
+        "varying_scale": "logit",
+        "inactive_value": 0.0,
+        "prior_mean": 0.1,
+        "prior_std": 0.08,
+        "colour": [
+            0.7215686274509804,
+            0.2941176470588235,
+            0.6745098039215687
+        ]
+    },
+    {
+        "name": "quiescent_divisions_per_year",
+        "module": "quiescent",
+        "default_value": 4.0,
+        "help_string": "maximum division rate for a quiescent cell",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 4.0,
+        "prior_std": 3.5,
+        "colour": [
+            0.9019607843137256,
+            0.5882352941176471,
+            0.8470588235294118
+        ]
+    },
+    {
+        "name": "ambient_quiescent_divisions_per_year",
+        "module": "quiescent",
+        "default_value": 16.5,
+        "help_string": "non-productive quiescent cell divisions per year",
+        "spatial_only": true,
+        "inactive_value": 0.0,
+        "varying_scale": "log",
+        "prior_mean": 16.5,
+        "prior_std": 16.5,
+        "colour": [
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    {
+        "name": "quiescent_gland_cell_count",
+        "module": "quiescent",
+        "default_value": 5,
+        "help_string": "number of cells represented by each quiescent 'cell', ie gland",
+        "spatial_only": true,
+        "inactive_value": 1,
+        "varying_scale": "linear",
+        "prior_dict": {
+            "type": "rv_discrete",
+            "kwargs": {
+                "values": [
+                    [
+                        1,
+                        5,
+                        30
+                    ],
+                    [
+                        0.334,
+                        0.333,
+                        0.333
+                    ]
+                ]
+            }
+        },
+        "colour": [
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    {
+        "name": "quiescent_protection_coefficient",
+        "module": "quiescent_protected",
+        "default_value": 0.5,
+        "help_string": "degree of protection for quiescent cells",
+        "spatial_only": false,
+        "inactive_value": 1.0,
+        "varying_scale": "logit",
+        "prior_mean": 0.5,
+        "prior_std": 0.4,
+        "colour": [
+            0.984126976675754,
+            0.4444443882833265,
+            0.4920634656284772
+        ]
+    },
+    {
+        "name": "protected_fraction",
+        "module": "protected",
+        "default_value": 0.25,
+        "help_string": "fraction of the basal cell population protected from smoking",
+        "spatial_only": false,
+        "inactive_value": 0.0,
+        "varying_scale": "logit",
+        "prior_mean": 0.25,
+        "prior_std": 0.2,
+        "colour": [
+            0.0313725490196078,
+            0.5215686274509804,
+            0.2901960784313726
+        ]
+    },
+    {
+        "name": "protection_coefficient",
+        "module": "protected",
+        "default_value": 0.5,
+        "help_string": "fraction of smoking effect felt by protected population",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "logit",
+        "prior_mean": 0.5,
+        "prior_std": 0.4,
+        "colour": [
+            0.5098039215686274,
+            0.6980392156862745,
+            0.5725490196078431
+        ]
+    },
+    {
+        "name": "protected_region_radius",
+        "module": "protected",
+        "default_value": 7.0,
+        "help_string": "size of each protected region",
+        "spatial_only": true,
+        "inactive_value": null,
+        "varying_scale": "linear",
+        "prior_dict": {
+            "type": "rv_discrete",
+            "kwargs": {
+                "values": [
+                    [
+                        4,
+                        5,
+                        6,
+                        7
+                    ],
+                    [
+                        0.25,
+                        0.25,
+                        0.25,
+                        0.25
+                    ]
+                ]
+            }
+        },
+        "colour": [
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    {
+        "name": "immune_death_rate",
+        "module": "immune_response",
+        "default_value": 0.00025,
+        "help_string": "death rate per cell per year per mutation while not smoking",
+        "spatial_only": false,
+        "inactive_value": 0.0,
+        "varying_scale": "log",
+        "prior_mean": 0.00025,
+        "prior_std": 0.00025,
+        "colour": [
+            0.0941176470588235,
+            0.4980392156862745,
+            0.788235294117647
+        ]
+    },
+    {
+        "name": "smoking_immune_coeff",
+        "module": "immune_response",
+        "default_value": 0.005,
+        "help_string": "effect of smoking on immune death",
+        "spatial_only": false,
+        "inactive_value": null,
+        "varying_scale": "log",
+        "prior_mean": 0.005,
+        "prior_std": 0.004,
+        "colour": [
+            0.5137254901960784,
+            0.6862745098039216,
+            0.8549019607843137
+        ]
+    },
+    {
+        "name": "smoking_driver_fitness_augmentation",
+        "module": "smoking_driver",
+        "default_value": 3.0,
+        "help_string": "additional fitness effect coefficient of driver mutations during smoking",
+        "spatial_only": false,
+        "inactive_value": 0.0,
+        "varying_scale": "log",
+        "prior_mean": 3.0,
+        "prior_std": 2,
+        "colour": [
+            0.5396826187759862,
+            0.6031745861264651,
+            0.0317459481883249
+        ]
+    }
+]

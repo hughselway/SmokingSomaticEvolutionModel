@@ -1,0 +1,43 @@
+
+
+``` {r imports}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(multimode)
+library(stringr)
+```
+
+``` {r bimodality_test}
+df <- read.csv("/Users/hughselway/Documents/ClonesModelling/ClonesModelling/data/patient_data/cell_mutation_counts_yoshida_huang.csv")
+results <- data.frame()
+
+for (method in c("SI", "HY", "FM", "HH", "CH", "ACR")) {
+    print(method)
+    method_results <- df %>%
+        filter(str_starts(patient, "PD")) %>%  # Only consider patients from Yoshida et al.
+        group_by(patient) %>%
+        summarise(bimodality_p_value = multimode::modetest(
+            total_mutations,
+            B = 100000
+        )$p.value, .groups = "drop") %>%
+        mutate(
+            method = method,
+            p.adjust = p.adjust(bimodality_p_value, method = "BH")
+        ) %>%
+        select(patient, method, p.adjust)
+
+    results <- bind_rows(results, method_results)
+}
+
+final_results <- results %>%
+    pivot_wider(names_from = method, values_from = p.adjust)
+
+write.table(
+    final_results,
+    file = "/Users/hughselway/Documents/ClonesModelling/notebooks/data/25-07-28_bimodality_test/final_results.txt",
+    row.names = FALSE,
+    col.names = TRUE,
+    sep = "\t"
+)
+```
